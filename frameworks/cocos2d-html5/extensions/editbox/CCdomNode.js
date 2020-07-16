@@ -374,7 +374,7 @@ cc.DOM.methods = /** @lends cc.DOM# */{
     },
 
     /**
-     * replace pause Schedule and Actions of ccNode
+     * replace pause.png Schedule and Actions of ccNode
      */
     pause:function () {
         this.getScheduler().pauseTarget(this);

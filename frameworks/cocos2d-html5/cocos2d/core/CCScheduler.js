@@ -296,7 +296,7 @@ cc.Scheduler = cc.Class.extend(/** @lends cc.Scheduler# */{
 
     _hashForTimers:null, //Used for "selectors with interval"
     _arrayForTimers:null, //Speed up indexing
-    _hashForUpdates:null, // hash used to fetch quickly the list entries for pause,delete,etc
+    _hashForUpdates: null, // hash used to fetch quickly the list entries for pause.png,delete,etc
     //_arrayForUpdates:null, //Speed up indexing
 
     _currentTarget:null,
@@ -579,7 +579,7 @@ cc.Scheduler = cc.Class.extend(/** @lends cc.Scheduler# */{
         var element = this._hashForTimers[target.__instanceId];
 
         if(!element){
-            // Is this the 1st element ? Then set the pause level to all the callback_fns of this target
+            // Is this the 1st element ? Then set the pause.png level to all the callback_fns of this target
             element = new cc.HashTimerEntry(null, target, 0, null, null, paused, null);
             this._arrayForTimers.push(element);
             this._hashForTimers[target.__instanceId] = element;

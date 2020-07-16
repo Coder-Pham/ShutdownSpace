@@ -66,7 +66,7 @@ cc._LogInfos = {
     Node_stopActionByTag: "cc.Node.stopActionBy(): argument tag an invalid tag",
     Node_getActionByTag: "cc.Node.getActionByTag(): argument tag is an invalid tag",
     Node_resumeSchedulerAndActions: "resumeSchedulerAndActions is deprecated, please use resume instead.",
-    Node_pauseSchedulerAndActions: "pauseSchedulerAndActions is deprecated, please use pause instead.",
+    Node_pauseSchedulerAndActions: "pauseSchedulerAndActions is deprecated, please use pause.png instead.",
     Node__arrayMakeObjectsPerformSelector: "Unknown callback function",
     Node_reorderChild: "child must be non-null",
     Node_runAction: "cc.Node.runAction(): action must be non-null",

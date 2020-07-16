@@ -13,7 +13,12 @@ var res = {
     enemy3_png: "res/assets/enemy3.png",
     redBullet: "res/assets/redBullet.png",
     yellowBullet: "res/assets/yellowBullet.png",
-    particle_png: "res/assets/particle.png"
+    particle_png: "res/assets/particle.png",
+    pause: "res/assets/pause.png",
+    play: "res/assets/play.png",
+    power: "res/assets/power.png",
+    rate: "res/assets/firerate.png",
+    start: "res/assets/start.png"
 };
 
 var g_resources = [];

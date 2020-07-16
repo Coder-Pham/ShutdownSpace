@@ -306,7 +306,7 @@ cc.ScrollView = cc.Layer.extend(/** @lends cc.ScrollView# */{
     },
 
     /**
-     * Provided to make scroll view compatible with SWLayer's pause method
+     * Provided to make scroll view compatible with SWLayer's pause.png method
      */
     pause:function (sender) {
         this._container.pause();

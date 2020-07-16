@@ -466,7 +466,7 @@ cc.Director = cc.Class.extend(/** @lends cc.Director# */{
     },
 
     /**
-     * Resume director after pause, if the current scene is not paused, nothing will happen.
+     * Resume director after pause.png, if the current scene is not paused, nothing will happen.
      */
     resume: function () {
         if (!this._paused) {

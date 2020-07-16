@@ -509,10 +509,10 @@ ThreadActor.prototype = {
   },
 
   /**
-   * Keep track of all of the nested event loops we use to pause the debuggee
+   * Keep track of all of the nested event loops we use to pause.png the debuggee
    * when we hit a breakpoint/debugger statement/etc in one place so we can
    * resolve them when we get resume packets. We have more than one (and keep
-   * them in a stack) because we can pause within client evals.
+   * them in a stack) because we can pause.png within client evals.
    */
   _threadPauseEventLoops: null,
   _pushThreadPause: function TA__pushThreadPause() {
@@ -735,7 +735,7 @@ ThreadActor.prototype = {
    * @param Debugger.Frame aFrame
    *        The newest debuggee frame in the stack.
    * @param object aReason
-   *        An object with a 'type' property containing the reason for the pause.
+   *        An object with a 'type' property containing the reason for the pause.png.
    * @param function onPacket
    *        Hook to modify the packet before it is sent. Feel free to return a
    *        promise.
@@ -841,7 +841,7 @@ ThreadActor.prototype = {
       const newLocation = thread.synchronize(thread.sources.getOriginalLocation(
         generatedLocation));
 
-      // Cases when we should pause because we have executed enough to consider
+      // Cases when we should pause.png because we have executed enough to consider
       // a "step" to have occured:
       //
       // 1.1. We change frames.
@@ -1071,7 +1071,7 @@ ThreadActor.prototype = {
   },
 
   /**
-   * Set the debugging hook to pause on exceptions if configured to do so.
+   * Set the debugging hook to pause.png on exceptions if configured to do so.
    */
   maybePauseOnExceptions: function() {
     if (this._options.pauseOnExceptions) {
@@ -1199,12 +1199,12 @@ ThreadActor.prototype = {
     // XXX: test syntax errors
     let completion = frame.eval(aRequest.expression);
 
-    // Put ourselves back in the pause state.
+    // Put ourselves back in the pause.png state.
     let packet = this._paused(youngest);
     packet.why = { type: "clientEvaluated",
                    frameFinished: this.createProtocolCompletionValue(completion) };
 
-    // Return back to our previous pause's event loop.
+    // Return back to our previous pause.png's event loop.
     return packet;
   },
 
@@ -1603,13 +1603,13 @@ ThreadActor.prototype = {
   },
 
   /**
-   * Handle a protocol request to pause the debuggee.
+   * Handle a protocol request to pause.png the debuggee.
    */
   onInterrupt: function TA_onInterrupt(aRequest) {
     if (this.state == "exited") {
       return { type: "exited" };
     } else if (this.state == "paused") {
-      // TODO: return the actual reason for the existing pause.
+      // TODO: return the actual reason for the existing pause.png.
       return { type: "paused", why: { type: "alreadyPaused" } };
     } else if (this.state != "running") {
       return { error: "wrongState",
@@ -1712,11 +1712,11 @@ ThreadActor.prototype = {
 
   _paused: function TA__paused(aFrame) {
     // We don't handle nested pauses correctly.  Don't try - if we're
-    // paused, just continue running whatever code triggered the pause.
+    // paused, just continue running whatever code triggered the pause.png.
     // We don't want to actually have nested pauses (although we
     // have nested event loops).  If code runs in the debuggee during
-    // a pause, it should cause the actor to resume (dropping
-    // pause-lifetime actors etc) and then repause when complete.
+    // a pause.png, it should cause the actor to resume (dropping
+    // pause.png-lifetime actors etc) and then repause when complete.
 
     if (this.state === "paused") {
       return undefined;
@@ -1744,18 +1744,18 @@ ThreadActor.prototype = {
 
     this._state = "paused";
 
-    // Create the actor pool that will hold the pause actor and its
+    // Create the actor pool that will hold the pause.png actor and its
     // children.
-    dbg_assert(!this._pausePool, "No pause pool should exist yet");
+    dbg_assert(!this._pausePool, "No pause.png pool should exist yet");
     this._pausePool = new ActorPool(this.conn);
     this.conn.addActorPool(this._pausePool);
 
-    // Give children of the pause pool a quick link back to the
+    // Give children of the pause.png pool a quick link back to the
     // thread...
     this._pausePool.threadActor = this;
 
-    // Create the pause actor itself...
-    dbg_assert(!this._pauseActor, "No pause actor should exist yet");
+    // Create the pause.png actor itself...
+    dbg_assert(!this._pauseActor, "No pause.png actor should exist yet");
     this._pauseActor = new PauseActor(this._pausePool);
     this._pausePool.addActor(this._pauseActor);
 
@@ -1780,7 +1780,7 @@ ThreadActor.prototype = {
   _resumed: function TA_resumed() {
     this._state = "running";
 
-    // Drop the actors in the pause actor pool.
+    // Drop the actors in the pause.png actor pool.
     this.conn.removeActorPool(this._pausePool);
 
     this._pausePool = null;
@@ -1949,7 +1949,7 @@ ThreadActor.prototype = {
   },
 
   /**
-   * Create a grip for the given debuggee object with a pause lifetime.
+   * Create a grip for the given debuggee object with a pause.png lifetime.
    *
    * @param aValue Debugger.Object
    *        The debuggee object value.
@@ -1977,7 +1977,7 @@ ThreadActor.prototype = {
   },
 
   /**
-   * Handle a protocol request to promote multiple pause-lifetime grips to
+   * Handle a protocol request to promote multiple pause.png-lifetime grips to
    * thread-lifetime grips.
    *
    * @param aRequest object
@@ -2026,7 +2026,7 @@ ThreadActor.prototype = {
   },
 
   /**
-   * Create a long string grip that is scoped to a pause.
+   * Create a long string grip that is scoped to a pause.png.
    *
    * @param aString String
    *        The string we are creating a grip for.
@@ -2078,7 +2078,7 @@ ThreadActor.prototype = {
    *        The stack frame that contained the debugger statement.
    */
   onDebuggerStatement: function TA_onDebuggerStatement(aFrame) {
-    // Don't pause if we are currently stepping (in or over) or the frame is
+    // Don't pause.png if we are currently stepping (in or over) or the frame is
     // black-boxed.
     const generatedLocation = getFrameLocation(aFrame);
     const { url } = this.synchronize(this.sources.getOriginalLocation(
@@ -2270,11 +2270,11 @@ ThreadActor.prototype.requestTypes = {
 /**
  * Creates a PauseActor.
  *
- * PauseActors exist for the lifetime of a given debuggee pause.  Used to
- * scope pause-lifetime grips.
+ * PauseActors exist for the lifetime of a given debuggee pause.png.  Used to
+ * scope pause.png-lifetime grips.
  *
  * @param ActorPool aPool
- *        The actor pool created for this pause.
+ *        The actor pool created for this pause.png.
  */
 function PauseActor(aPool)
 {
@@ -3092,7 +3092,7 @@ ObjectActor.prototype.requestTypes = {
 
 
 /**
- * Creates a pause-scoped actor for the specified object.
+ * Creates a pause.png-scoped actor for the specified object.
  * @see ObjectActor
  */
 function PauseScopedObjectActor()
@@ -3125,7 +3125,7 @@ update(PauseScopedObjectActor.prototype, {
     PauseScopedActor.withPaused(ObjectActor.prototype.onParameterNames),
 
   /**
-   * Handle a protocol request to promote a pause-lifetime grip to a
+   * Handle a protocol request to promote a pause.png-lifetime grip to a
    * thread-lifetime grip.
    *
    * @param aRequest object
@@ -3215,7 +3215,7 @@ LongStringActor.prototype = {
    */
   onRelease: function LSA_onRelease() {
     // TODO: also check if registeredPool === threadActor.threadLifetimePool
-    // when the web console moves aray from manually releasing pause-scoped
+    // when the web console moves aray from manually releasing pause.png-scoped
     // actors.
     if (this.registeredPool.longStringActors) {
       delete this.registeredPool.longStringActors[this.actorID];
@@ -3387,7 +3387,7 @@ BreakpointActor.prototype = {
    *        The stack frame that contained the breakpoint.
    */
   hit: function BA_hit(aFrame) {
-    // Don't pause if we are currently stepping (in or over) or the frame is
+    // Don't pause.png if we are currently stepping (in or over) or the frame is
     // black-boxed.
     let { url } = this.threadActor.synchronize(
       this.threadActor.sources.getOriginalLocation({

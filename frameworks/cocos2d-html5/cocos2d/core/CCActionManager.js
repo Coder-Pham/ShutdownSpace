@@ -59,7 +59,7 @@ cc.HashElement = cc.Class.extend(/** @lends cc.HashElement# */{
  * But there are some cases where you might need to use this class. <br/>
  * Examples:<br/>
  * - When you want to run an action where the target is different from a CCNode.<br/>
- * - When you want to pause / resume the actions<br/>
+ * - When you want to pause.png / resume the actions<br/>
  * @class
  * @extends cc.Class
  * @example

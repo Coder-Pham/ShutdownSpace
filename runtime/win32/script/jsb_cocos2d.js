@@ -1656,7 +1656,7 @@ cc.EventCustom.prototype.setUserData = function(userData) {
     this._userData = userData;
 };
 
-cc.EventCustom.prototype.getUserData = function() {
+cc.EventCustom.prototype._ = function () {
     return this._userData;
 };
 
@@ -2662,7 +2662,7 @@ cc.affineTransformInvert = function (t) {
 cc.Node.prototype.setUserData = function (data) {
     this.userData = data;
 };
-cc.Node.prototype.getUserData = function () {
+cc.Node.prototype._ = function () {
     return this.userData;
 };
 

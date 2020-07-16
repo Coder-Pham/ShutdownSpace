@@ -12,11 +12,14 @@
   "modules": ["cocos2d"],
 
   "jsList": [
+    "src/splash/splash.js",
     "src/resource.js",
-    "src/app.js",
-    "src/background.js",
-    "src/spaceship.js",
-    "src/bullet.js",
-    "src/enemy.js"
+    "src/game/app.js",
+    "src/game/status.js",
+    "src/game/background.js",
+    "src/game/spaceship.js",
+    "src/game/bullet.js",
+    "src/game/enemy.js",
+    "src/game/powerup.js"
   ]
 }

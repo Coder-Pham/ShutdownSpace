@@ -246,7 +246,7 @@ ccs.ProcessBase = ccs.Class.extend(/** @lends ccs.ProcessBase# */{
     },
 
     /**
-     * Returns whether the animation is pause
+     * Returns whether the animation is pause.png
      * @returns {boolean}
      */
     isPause: function () {

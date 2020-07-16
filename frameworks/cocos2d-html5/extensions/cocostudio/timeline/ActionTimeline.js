@@ -192,8 +192,8 @@ ccs.ActionTimeline = cc.Action.extend({
     },
 
     /**
-     * Goto the specified frame index, and pause at this index.
-     * @param startIndex The animation will pause at this index.
+     * Goto the specified frame index, and pause.png at this index.
+     * @param startIndex The animation will pause.png at this index.
      */
     gotoFrameAndPause: function(startIndex){
         this._startFrame = this._currentFrame = startIndex;

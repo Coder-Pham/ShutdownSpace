@@ -1041,7 +1041,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
      * @function
      * @return {object}  A custom user data pointer
      */
-    getUserData: function () {
+    _: function () {
         return this.userData;
     },
 
@@ -1802,7 +1802,7 @@ cc.Node = cc.Class.extend(/** @lends cc.Node# */{
     /**
      * <p>Pauses all scheduled selectors and actions.<br/>
      * This method is called internally by onExit</p>
-     * @deprecated since v3.0, please use pause instead
+     * @deprecated since v3.0, please use pause.png instead
      * @function
      */
     pauseSchedulerAndActions: function () {
