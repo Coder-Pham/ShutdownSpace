@@ -8,6 +8,7 @@ var BackgroundLayer = cc.Layer.extend({
     _touchListener: null,
     ctor: function () {
         this._super();
+
         var size = cc.winSize;
         gameStatus = new GameStatus();
 
@@ -61,7 +62,7 @@ var BackgroundLayer = cc.Layer.extend({
     onTouchBegan: function (touch, event) {
         var location = touch.getLocation();
         let planeBoundingBox = ship.getBoundingBox();
-        if (cc.rectIntersectsRect(location, planeBoundingBox)) {
+        if (isTouch(location, planeBoundingBox)) {
             ship._touching = true;
         }
         return true;
@@ -138,7 +139,6 @@ var GameScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
         layer = new BackgroundLayer();
-        //layer.init();
         this.addChild(layer);
     },
 });
@@ -148,6 +148,15 @@ var pause_resume = function () {
         cc.director.pause();
     else
         cc.director.resume();
+}
+
+function isTouch(location, boundingBox) {
+    if (location.x >= boundingBox.x &&
+        location.x <= boundingBox.x + boundingBox.width &&
+        location.y >= boundingBox.y &&
+        location.y <= boundingBox.y + boundingBox.height)
+        return true;
+    return false;
 }
 
 

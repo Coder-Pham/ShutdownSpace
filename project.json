@@ -14,7 +14,7 @@
   "jsList": [
     "src/splash/splash.js",
     "src/resource.js",
-    "src/game/app.js",
+    "src/game/game.js",
     "src/game/status.js",
     "src/game/background.js",
     "src/game/spaceship.js",

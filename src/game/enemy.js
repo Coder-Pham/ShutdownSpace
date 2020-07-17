@@ -71,6 +71,8 @@ var Enemy = cc.Sprite.extend({
     },
     reuse: function () {
         this.initData();
+        let rotateNormal = cc.rotateTo(0, 0);
+        this.runAction(rotateNormal);
     },
     update: function (dt) {
         // Pause game
