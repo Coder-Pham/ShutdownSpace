@@ -108,7 +108,7 @@ var BackgroundLayer = cc.Layer.extend({
     shipMakeShot: function () {
         this.scheduleShipShot();
         if (ship._touching) {
-            var bullet = CreateBullet(ship._position, ship._firePower);
+            var bullet = CreateBullet(ship._position, ship._firePower, 1);
             //var bullet = new Bullet(ship._position);
             this.addChild(bullet, 1);
         }
